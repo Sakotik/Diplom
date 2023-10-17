@@ -1,11 +1,12 @@
 package ru.practicum.ewm.repository;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.web.context.annotation.SessionScope;
 import ru.practicum.ewm.ViewStats;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+@SessionScope
 public class ViewStatsMapper implements RowMapper<ViewStats> {
 
     @Override
