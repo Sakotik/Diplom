@@ -1,12 +1,12 @@
 package ru.practicum.ewm.repository;
 
+import lombok.experimental.UtilityClass;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 import ru.practicum.ewm.ViewStats;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@Component
+@UtilityClass
 public class ViewStatsMapper implements RowMapper<ViewStats> {
 
     @Override
