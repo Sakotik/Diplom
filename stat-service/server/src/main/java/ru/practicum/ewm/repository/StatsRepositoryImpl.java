@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StatsRepositoryImpl implements StatsRepository {
     private final JdbcTemplate jdbcTemplate;
+    private final ViewStatsMapper viewStatsMapper;
 
     @Override
     public void saveHit(EndpointHit hit) {
@@ -29,8 +30,7 @@ public class StatsRepositoryImpl implements StatsRepository {
             query += createUrisQuery(request.getUris());
         }
         query += " GROUP BY app, uri ORDER BY hits DESC";
-
-        return jdbcTemplate.query(query, ViewStatsMapper.mapRow(), request.getStart(), request.getEnd());
+        return jdbcTemplate.query(query, viewStatsMapper, request.getStart(), request.getEnd());
     }
 
     @Override
@@ -40,7 +40,7 @@ public class StatsRepositoryImpl implements StatsRepository {
             query += createUrisQuery(request.getUris());
         }
         query += " GROUP BY app, uri ORDER BY hits DESC";
-        return jdbcTemplate.query(query, ViewStatsMapper.mapRow(), request.getStart(), request.getEnd());
+        return jdbcTemplate.query(query, viewStatsMapper, request.getStart(), request.getEnd());
     }
 
 

@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.dto.CategoryDto;
-import ru.practicum.ewm.dto.NewCategoryDto;
+import ru.practicum.ewm.dto.category.CategoryDto;
+import ru.practicum.ewm.dto.category.NewCategoryDto;
 import ru.practicum.ewm.service.CategoryService;
 
 import javax.validation.Valid;
@@ -37,7 +37,7 @@ public class CategoryAdminController {
     @PatchMapping("/{catId}")
     public CategoryDto updateCategory(@PathVariable(value = "catId") @Min(1) Long catId,
                                       @RequestBody @Valid CategoryDto categoryDto) {
-        log.info("PATCH запрос на обновдение категории с id = {}", catId);
+        log.info("PATCH запрос на обновление категории с id = {}", catId);
         return categoryService.updateCategory(catId, categoryDto);
     }
 }
